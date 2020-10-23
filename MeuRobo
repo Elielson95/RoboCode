@@ -1,0 +1,44 @@
+package batalha;
+
+import java.awt.Color;
+
+import robocode.AdvancedRobot;
+import robocode.HitRobotEvent;
+import robocode.HitWallEvent;
+import robocode.ScannedRobotEvent;
+
+public class MeuRobo extends AdvancedRobot {
+
+	boolean movingForward;
+	boolean inWall;
+
+	@Override
+	public void run() {
+
+		setCores();
+
+		while (true) {
+			ahead(100);
+			setTurnLeft(90);
+			setTurnGunRight(20000);
+
+			execute();
+		}
+
+	}
+
+	@Override
+	public void onScannedRobot(ScannedRobotEvent e) {
+		fire(10);
+	}
+
+	private void setCores() {
+		setBodyColor(Color.darkGray);
+		setGunColor(Color.blue);
+		setRadarColor(Color.black);
+		setBulletColor(Color.darkGray);
+		setScanColor(Color.black);
+
+	}
+
+}
